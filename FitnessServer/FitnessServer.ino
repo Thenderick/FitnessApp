@@ -10,23 +10,7 @@ int echoPin = 7;
 int exerciseDuration = 30000; //Voor nu een halve minuut
 int actualDuration;
 
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  for(i = 0; i < 2; i++){
-    pinMode(led[i], OUTPUT);
-  }
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-  Planking(trigPin, echoPin, exerciseDuration);
-  delay(10000); // 10 seconden pauze en dan komt of de volgende workout of dezelfde weer
-}
-
-int getDistance(int trig, int echo){
-  pinMode(trig, OUTPUT);
-  pinMode(echo, INPUT);
+void getDistance(int trig, int echo){
 
   digitalWrite(trig, LOW);
   delayMicroseconds(2);
@@ -40,7 +24,7 @@ int getDistance(int trig, int echo){
 
   if(distance < 100 && distance > 5){
     Serial.print("Distance: ");
-    return Serial.println(distance);
+    Serial.println(distance);
     Serial.print(" cm");
   }else{
     for(i = 0; i < 3; i++){ // als de meting niet goed is knippert het rode lampje 3 keer en dan na een seconde gaat hij weer overnieuw meten
@@ -49,15 +33,13 @@ int getDistance(int trig, int echo){
       digitalWrite(led[0], LOW);
       delay(500);
     }
-    distance = NULL;
+    distance = 0;
     delay(1000);
-    return getDistance(trig, echo);
+    getDistance(trig, echo);
   }
 }
 
-int calibrateHeight(int trig, int echo){
-  pinMode(trig, OUTPUT);
-  pinMode(echo, INPUT);
+void calibrateHeight(int trig, int echo){
   
   delay(3000); //3 seconden om goed in positie te komen voordat hij gaat meten
 
@@ -66,9 +48,9 @@ int calibrateHeight(int trig, int echo){
     countArray[i] = distance;
   }
   
-  distance = (countArray[1]+countArray[2]+countArray[3]+countArray[4]+countArray[5]) / 6; // De eerste word niet mee gerekend, want dan ben je vaak nog niet helemaal goed in positie
+  distance = (countArray[0]+countArray[1]+countArray[2]+countArray[3]+countArray[4]+countArray[5]) / 6; // De eerste word niet mee gerekend, want dan ben je vaak nog niet helemaal goed in positie
   
-  if(distance != NULL){ 
+  if(distance != 0){ 
     for(i = 0; i < 2; i++){ // Als het calibreren succesvol is afgerond knippert hij 2 keer groen
       digitalWrite(led[1], HIGH);
       delay(100);
@@ -77,7 +59,7 @@ int calibrateHeight(int trig, int echo){
     }
     calibratedHeight = distance;
     Serial.print("Distance: ");
-    return Serial.println(calibratedHeight);
+    Serial.println(calibratedHeight);
     Serial.print(" cm");
   }else{
     for(i = 0; i < 3; i++){ // als de meting niet goed is knippert het rode lampje 3 keer en dan na een seconde gaat hij weer overnieuw meten
@@ -86,13 +68,11 @@ int calibrateHeight(int trig, int echo){
       digitalWrite(led[0], LOW);
       delay(500);
     }
-    return calibrateHeight(trig, echo);
+    calibrateHeight(trig, echo);
   }
 }
 
-int Planking(int trig, int echo, int eDuration){
-  pinMode(trig, OUTPUT);
-  pinMode(echo, INPUT);
+void Planking(int trig, int echo, int eDuration){
 
   calibrateHeight(trig, echo);
 
@@ -101,19 +81,19 @@ int Planking(int trig, int echo, int eDuration){
       if(actualDuration != eDuration){
         digitalWrite(led[1], HIGH); //Zolang de hoogte goed is blijft het lampje groen
         digitalWrite(trig, LOW);
-        delayMicroseconds(2);
+        delay(2);
 
         digitalWrite(trig, HIGH);
-        delayMicroseconds(998);
+        delay(998);
         digitalWrite(trig, LOW);
 
         duration = pulseIn(echo, HIGH);
         distance = duration*0.034/2;
 
-        actualDuration += 1000;
+        actualDuration + 1000;
 
         Serial.print("Distance: ");
-        return Serial.println(distance);
+        Serial.println(distance);
         Serial.print(" cm");
       }else if(actualDuration == eDuration){
         for(i = 0; i < 4; i++){ // Als de oefening voorbij is knippert hij 5 keer snel
@@ -126,20 +106,36 @@ int Planking(int trig, int echo, int eDuration){
     }else{
       digitalWrite(led[0], HIGH); //Zolang de hoogte fout is blijft het lampje rood
       digitalWrite(trig, LOW);
-      delayMicroseconds(2);
+      delay(2);
 
       digitalWrite(trig, HIGH);
-      delayMicroseconds(998);
+      delay(998);
       digitalWrite(trig, LOW);
 
       duration = pulseIn(echo, HIGH);
       distance = duration*0.034/2;
 
-      actualDuration += 1000;
+      actualDuration + 1000;
 
       Serial.print("Distance: ");
-      return Serial.println(distance);
+      Serial.println(distance);
       Serial.print(" cm");
     }
   }
+}
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  for(i = 0; i < 2; i++){
+    pinMode(led[i], OUTPUT);
+  }
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  Planking(trigPin, echoPin, exerciseDuration);
+  delay(10000); // 10 seconden pauze en dan komt of de volgende workout of dezelfde weer
 }
