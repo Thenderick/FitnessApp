@@ -12,39 +12,37 @@ int actualDuration;
 int correcteUitvoer = 0;
 
 void getDistance(int trig, int echo){
-
   digitalWrite(trig, LOW);
   delay(2);
 
   digitalWrite(trig, HIGH);
-  delay(500); //Per halve seconde gaat hij meten
+  delay(998); 
   digitalWrite(trig, LOW);
 
   duration = pulseIn(echo, HIGH);
   distance = duration*0.034/2;
 
-  if(distance < 100 && distance > 5){
+  //if(distance < 100 && distance > 5){
     Serial.print("Distance: ");
     Serial.println(distance);
     Serial.print(" cm");
-  }else{
-    for(i = 0; i < 3; i++){ // als de meting niet goed is knippert het rode lampje 3 keer en dan na een seconde gaat hij weer overnieuw meten
-      digitalWrite(led[0], HIGH);
-      delay(500);
-      digitalWrite(led[0], LOW);
-      delay(500);
-    }
-    distance = 0;
-    delay(1000);
-    getDistance(trig, echo);
-  }
+  //}else{
+    //for(i = 0; i < 3; i++){ // als de meting niet goed is knippert het rode lampje 3 keer en dan na een seconde gaat hij weer overnieuw meten
+      //digitalWrite(led[0], HIGH);
+      //delay(500);
+      //digitalWrite(led[0], LOW);
+      //delay(500);
+    //}
+    //distance = 0;
+    //delay(1000);
+    //getDistance(trig, echo);
+  //}
 }
 
 void calibrateHeight(int trig, int echo){
-  
   delay(3000); //3 seconden om goed in positie te komen voordat hij gaat meten
 
-  for(i = 0; i <= 5; i++){ //Hij meet 6 keer om accurate resultaten te krijgen en doet dit over een periode van 3 seconden
+  for(i = 0; i <= 5; i++){ //Hij meet 6 keer om accurate resultaten te krijgen en doet dit over een periode van 6 seconden
     getDistance(trig, echo);
     countArray[i] = distance;
   }
@@ -69,58 +67,51 @@ void calibrateHeight(int trig, int echo){
       digitalWrite(led[0], LOW);
       delay(500);
     }
+    distance = 0;
     calibrateHeight(trig, echo);
   }
 }
 
-void goedOfFout(int trig, int echo){
-  if(distance == calibratedHeight || distance >= (calibratedHeight - 1) && distance <= calibratedHeight + 1){
+void goodOrWrong(int trig, int echo){
+  if(distance == calibratedHeight || distance >= (calibratedHeight - 1) && distance <= (calibratedHeight + 1)){
     i = 1; //Als de hoogte goed is, gaat het groene lampje aan
   }else{
     i = 0;//Als de hoogte niet goed is, gaat het rode lampje aan
   }
   digitalWrite(led[i], HIGH);
-  digitalWrite(trig, LOW);
-  delay(2);
-
-  digitalWrite(trig, HIGH);
-  delay(998);
-  digitalWrite(trig, LOW);
-
-  duration = pulseIn(echo, HIGH);
-  distance = duration*0.034/2;
+  
+  getDistance(trig, echo);
 
   actualDuration + 1000;
-
-  Serial.print("Distance: ");
-  Serial.println(distance);
-  Serial.print(" cm");
+  
+  digitalWrite(led[i], LOW);
 }
 
 void Planking(int trig, int echo, int eDuration){
-
   calibrateHeight(trig, echo);
-
+  
+  digitalWrite(led[0], HIGH);//Om te laten weten dat de oefening begint gaan beide lampjes 1 keer aan en uit
+  digitalWrite(led[1], HIGH);
+  delay(10);
+  digitalWrite(led[0], LOW);
+  digitalWrite(led[1], LOW);
+  delay(10);
+  
   while(actualDuration < eDuration){ //De exercise duurt op het moment een halve minuut en hij controlleert de hoogte elke seconde
-    if(distance == calibratedHeight && distance >= (calibratedHeight - 1) || distance <= calibratedHeight + 1){ //Er is speling van een cm omhoog en een cenitmeter omlaag
-      if(actualDuration != eDuration){
-        goedOfFout(trig, echo);
-      }else if(actualDuration == eDuration){
-        for(i = 0; i < 4; i++){ // Als de oefening voorbij is knippert hij 5 keer snel
-          digitalWrite(led[1], HIGH);
-          delay(10);
-          digitalWrite(led[1], LOW);
-          delay(10);
-        }
-      }
-    }else{
-      goedOfFout(trig, echo);
-    }
+      goodOrWrong(trig, echo);
   }
+  if(actualDuration >= eDuration){
+      for(i = 0; i < 4; i++){ // Als de oefening voorbij is knippert hij 5 keer snel
+        digitalWrite(led[1], HIGH);
+        delay(10);
+        digitalWrite(led[1], LOW);
+        delay(10);
+      }
+    }
 }
 
-void OverigeOefening(int afstand)
-   {  
+void squatsOrPushUps(int afstand, int trig, int echo){
+     getDistance(trig, echo);
      Serial.print("Afstand : ");
      Serial.println(distance);
       if(distance < afstand)
@@ -156,10 +147,10 @@ void loop() {
    /*
       switch (var) {
         case label1: //pushups
-           OverigeOefening(15);           
+           squatsOrPushUps(15, trigPin, echoPin);           
           break;
         case label2: //squats
-          OverigeOefening(60)
+          squatsOrPushUps(60, trigPin, echoPin)
           break;
          case label3:
          Planking(trigPin, echoPin, exerciseDuration);
@@ -169,5 +160,4 @@ void loop() {
           break;
       }
   */
-  delay(10000); // 10 seconden pauze en dan komt of de volgende workout of dezelfde weer
 }
