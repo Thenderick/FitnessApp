@@ -2,7 +2,7 @@
   const int echoPin = 7;
   const int groenled = 13;
   const int roodled = 12;
-  int Correcteuitvoer = 0;
+  int correcteUitvoer = 0;
   long duration;
 
   // deze methode meet en berekent de afstand
@@ -22,7 +22,7 @@
     }
 
    // deze methode controleert of de push-up correct(de gebruiker zakt ver genoeg door) wordt uitegevoerd 
-   int pushups()
+   void pushups()
    {  
      Serial.print("Afstand : ");
      Serial.println(distance(trigPin, echoPin));
@@ -44,7 +44,7 @@
    }
 
    // deze methode controleert of je ver genoeg doorzakt tijdens het squaten 
-   int squats()
+   void squats()
    {
      Serial.print("Afstand : ");
      Serial.println(distance(trigPin, echoPin));
@@ -76,7 +76,23 @@
   
   void loop() {
     // put your main code here, to run repeatedly:
-     pushups();
+    /*
+      switch (var) {
+        case label1:
+          pushups
+          break;
+        case label2:
+          squats
+          break;
+         case label3:
+         planking
+         break;  
+        default:
+          // statements
+          break;
+      }
+  */
+
      if (Correcteuitvoer == 5){
       Serial.print("Correct afgesloten ");
       Correcteuitvoer = 0;
