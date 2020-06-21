@@ -72,29 +72,38 @@ void calibrateHeight(int trig, int echo){
   }
 }
 
+void goedOfFout(int trig, int echo){
+  if(distance == calibratedHeight && distance >= (calibratedHeight - 1) || distance <= calibratedHeight + 1){
+    i = 1; //Als de hoogte goed is, gaat het groene lampje aan
+  }else{
+    i = 0;//Als de hoogte niet goed is, gaat het rode lampje aan
+  }
+  digitalWrite(led[i], HIGH);
+  digitalWrite(trig, LOW);
+  delay(2);
+
+  digitalWrite(trig, HIGH);
+  delay(998);
+  digitalWrite(trig, LOW);
+
+  duration = pulseIn(echo, HIGH);
+  distance = duration*0.034/2;
+
+  actualDuration + 1000;
+
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  Serial.print(" cm");
+}
+
 void Planking(int trig, int echo, int eDuration){
 
   calibrateHeight(trig, echo);
 
   while(actualDuration < eDuration){ //De exercise duurt op het moment een halve minuut en hij controlleert de hoogte elke seconde
-    if(distance == calibratedHeight || distance >= (calibratedHeight - 1) || distance <= calibratedHeight + 1){ //Er is speling van een cm omhoog en een cenitmeter omlaag
+    if(distance == calibratedHeight && distance >= (calibratedHeight - 1) || distance <= calibratedHeight + 1){ //Er is speling van een cm omhoog en een cenitmeter omlaag
       if(actualDuration != eDuration){
-        digitalWrite(led[1], HIGH); //Zolang de hoogte goed is blijft het lampje groen
-        digitalWrite(trig, LOW);
-        delay(2);
-
-        digitalWrite(trig, HIGH);
-        delay(998);
-        digitalWrite(trig, LOW);
-
-        duration = pulseIn(echo, HIGH);
-        distance = duration*0.034/2;
-
-        actualDuration + 1000;
-
-        Serial.print("Distance: ");
-        Serial.println(distance);
-        Serial.print(" cm");
+        goedOfFout(trig, echo);
       }else if(actualDuration == eDuration){
         for(i = 0; i < 4; i++){ // Als de oefening voorbij is knippert hij 5 keer snel
           digitalWrite(led[1], HIGH);
@@ -104,22 +113,7 @@ void Planking(int trig, int echo, int eDuration){
         }
       }
     }else{
-      digitalWrite(led[0], HIGH); //Zolang de hoogte fout is blijft het lampje rood
-      digitalWrite(trig, LOW);
-      delay(2);
-
-      digitalWrite(trig, HIGH);
-      delay(998);
-      digitalWrite(trig, LOW);
-
-      duration = pulseIn(echo, HIGH);
-      distance = duration*0.034/2;
-
-      actualDuration + 1000;
-
-      Serial.print("Distance: ");
-      Serial.println(distance);
-      Serial.print(" cm");
+      goedOfFout(trig, echo);
     }
   }
 }
