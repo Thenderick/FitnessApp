@@ -73,7 +73,7 @@ void calibrateHeight(int trig, int echo){
 }
 
 void goodOrWrong(int trig, int echo){
-  if(distance == calibratedHeight || distance >= (calibratedHeight - 1) && distance <= (calibratedHeight + 1)){
+  if(distance >= (calibratedHeight - 1) && distance <= (calibratedHeight + 1)){
     i = 1; //Als de hoogte goed is, gaat het groene lampje aan
   }else{
     i = 0;//Als de hoogte niet goed is, gaat het rode lampje aan
