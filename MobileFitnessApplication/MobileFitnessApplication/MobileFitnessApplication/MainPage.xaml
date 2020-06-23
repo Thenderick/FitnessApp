@@ -7,15 +7,21 @@
              x:Class="MobileFitnessApplication.MainPage">
 
     <StackLayout HorizontalOptions="Center"  VerticalOptions="CenterAndExpand">
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" ></Label>
-          
-          
-        <Entry x:Name="username" Placeholder="username"></Entry>
-        
-        <Entry x:Name="password" Placeholder="password"></Entry>
-        <Button x:Name="btn2" Clicked="Button_Clicked"></Button>
-        <Button x:Name="btn1" Clicked="Button_Clicked_1" ></Button>
+        <Label Text="Planking"></Label>
+        <ImageButton Source="squats.jpg"
+                     HorizontalOptions="Center"
+                     VerticalOptions="CenterAndExpand"
+                     Clicked="squats" />
+        <Label Text="Planking"></Label>
+        <ImageButton Source="planking.jpg"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="planking" />
+        <Label Text="Planking"></Label>
+        <ImageButton Source="pushups.jpg"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="pushups" />
     </StackLayout>
 
 </ContentPage>

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Configuration;
 using System.Diagnostics;
+using Xamarin.Forms.Xaml;
 
 namespace MobileFitnessApplication
 {
@@ -27,23 +28,19 @@ namespace MobileFitnessApplication
             
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void planking(object sender, EventArgs e)
         {
-            var d = a.Getuser(username.Text, password.Text);
-            if (d.Count != 0)
-            {
-                Navigation.PushAsync(new register(a));
-            }
-            else
-            {
-
-            }
+            Navigation.PushAsync(new plankingexc());
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private void squats(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new register(a));
+            Navigation.PushAsync(new squatsexc());
+        }
 
+        private void pushups(object sender, EventArgs e)
+        {
+           Navigation.PushAsync(new pushupsexc());
         }
     }
 }

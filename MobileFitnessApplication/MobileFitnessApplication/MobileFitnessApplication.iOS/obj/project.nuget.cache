@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OkkRZzGc3t2k1IHZQ3N0hcYmzLEXmDN7lZnHJgiKSBaP7DfzCzyCuDHx1rXjHTTDz7ajHjgF3WSYnBNf87lfIw==",
+  "dgSpecHash": "ieXfgGthW/BghN5HokFjHbSdrF/8JtCbGAxjmQ+oiH7K02B6H1ozUfV5CHw3mCbq6t+a2xRhAffIF3mhjqG4rg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj",
+  "projectFilePath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\robin\\.nuget\\packages\\sqlite-net-pcl\\1.7.335\\sqlite-net-pcl.1.7.335.nupkg.sha512",
     "C:\\Users\\robin\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.3\\sqlitepclraw.bundle_green.2.0.3.nupkg.sha512",
@@ -13,7 +13,7 @@
     "C:\\Users\\robin\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\robin\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
-    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.4.0.991265\\xamarin.forms.4.4.0.991265.nupkg.sha512"
+    "C:\\Users\\robin\\.nuget\\packages\\xamarin.forms\\4.4.0.991265\\xamarin.forms.4.4.0.991265.nupkg.sha512"
   ],
   "logs": []
 }

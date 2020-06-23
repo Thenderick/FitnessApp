@@ -2175,11 +2175,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\MobileFitnessApplication.Android.csproj",
+      "projectUniqueName": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\MobileFitnessApplication.Android.csproj",
       "projectName": "MobileFitnessApplication.Android",
-      "projectPath": "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\MobileFitnessApplication.Android.csproj",
+      "projectPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\MobileFitnessApplication.Android.csproj",
       "packagesPath": "C:\\Users\\robin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\obj\\",
+      "outputPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -2200,8 +2200,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj": {
-              "projectPath": "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj"
+            "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj": {
+              "projectPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj"
             }
           }
         }

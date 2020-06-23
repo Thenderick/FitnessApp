@@ -1484,11 +1484,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj",
+      "projectUniqueName": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj",
       "projectName": "MobileFitnessApplication.iOS",
-      "projectPath": "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj",
+      "projectPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj",
       "packagesPath": "C:\\Users\\robin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\obj\\",
+      "outputPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -1509,8 +1509,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj": {
-              "projectPath": "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj"
+            "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj": {
+              "projectPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj"
             }
           }
         }

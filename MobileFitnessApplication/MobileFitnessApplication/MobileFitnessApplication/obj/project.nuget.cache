@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yyiZYml69nySKdUHeh2KoND6xiCPHlAGqs9bufXgLtkUloLuRMUk1KjiyUOMnj01HAQnEopD2IT0zz+ww7Ps0g==",
+  "dgSpecHash": "K2UQwPjaoDE7FDuseNlGbHA+X6LZ3uvRatg605ZN3Vc22QiL9CcdGgK6zwqzJ7Z6ToSEfJJt7gEFKdPzQTmgAQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\robin\\Desktop\\project\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj",
+  "projectFilePath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
@@ -16,7 +16,7 @@
     "C:\\Users\\robin\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\robin\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
-    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.4.0.991265\\xamarin.forms.4.4.0.991265.nupkg.sha512"
+    "C:\\Users\\robin\\.nuget\\packages\\xamarin.forms\\4.4.0.991265\\xamarin.forms.4.4.0.991265.nupkg.sha512"
   ],
   "logs": []
 }
