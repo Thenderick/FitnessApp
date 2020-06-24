@@ -173,7 +173,7 @@ void stopExercise(){
   server.write(correcteUitvoer);
 }
 
-//Zorgt ervoor dat de juiste oefening blijft loopen
+//Zorgt ervoor dat de juiste oefening in de loop blijft
 void exercise(){
   switch (currentExercise){
     case 'p': //pushups
