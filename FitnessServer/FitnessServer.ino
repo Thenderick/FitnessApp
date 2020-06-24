@@ -18,7 +18,7 @@ int trigPin = 6;
 int echoPin = 7;
 int exerciseDuration = 30000; //Voor nu een halve minuut
 int actualDuration;
-int correcteUitvoer = 0;
+int correcteUitvoer;
 char Phone_input; //voor het oplaan van het ontvangen karakter
 
 void getDistance(int trig, int echo){
@@ -133,11 +133,53 @@ void squatsOrPushUps(int afstand, int trig, int echo){
        delay(500);
        digitalWrite(led[0], LOW);
       }
+      Serial.print("Aantal correcte uitvoer: ");
+      Serial.println(correcteUitvoer);
    }
+}
+
+void execute(char c){
+  switch (Phone_input) {
+        case 'p': //pushups
+          squatsOrPushUps(15, trigPin, echoPin);           
+          break;
+        case 's': //squats
+          squatsOrPushUps(60, trigPin, echoPin);
+          break;
+        case 'l':
+         Planking(trigPin, echoPin);
+         break;  
+        case 'b':
+           stopExercise();
+         break;
+        default:
+          
+         break;
+      }
+}
+
+void stopExercise(){
+  char tempExercise = Phone_input;
+  Phone_input = NULL;
+  switch (tempExercise){
+    case 'p':
+      Serial.print("Totale aantal pushups: "); Serial.println(correcteUitvoer);
+      break;
+    case 's':
+      Serial.print("Totale aantal squats: "); Serial.println(correcteUitvoer);
+      break;
+    case 'l':
+      Serial.print("Totale tijd geplankt: "); Serial.println(correcteUitvoer);
+      break;
+    default:
+      break;
+  }
+  server.write(correcteUitvoer);
 }
 
 void setup() {
   // put your setup code here, to run once:
+  correcteUitvoer = 0;
   Serial.begin(115200);
   for(i = 0; i < 2; i++){
     pinMode(led[i], OUTPUT);
@@ -156,25 +198,7 @@ void setup() {
 
 void loop() {
   client = server.available();
-  
-  while(client.available()){
-    Phone_input = client.read();
-      switch (Phone_input) {
-        case 'p': //pushups
-          squatsOrPushUps(15, trigPin, echoPin);           
-          break;
-        case 's': //squats
-          squatsOrPushUps(60, trigPin, echoPin);
-          break;
-        case 'l':
-         Planking(trigPin, echoPin);
-         break;  
-        case 'b':
-           server.write(correcteUitvoer);
-         break;
-        default:
-          
-         break;
-      }
+  Phone_input = client.read();
+  execute(Phone_input);
+      
   }
-}
