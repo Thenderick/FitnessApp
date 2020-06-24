@@ -16,8 +16,6 @@ int i;
 int led[2] = {12,13}; //12 = rood 13 = groen
 int trigPin = 6;
 int echoPin = 7;
-int exerciseDuration = 30000; //Voor nu een halve minuut
-int actualDuration;
 int correcteUitvoer;
 char Phone_input; //voor het oplaan van het ontvangen karakter
 
@@ -31,22 +29,10 @@ void getDistance(int trig, int echo){
 
   duration = pulseIn(echo, HIGH);
   distance = duration*0.034/2;
-
-  //if(distance < 100 && distance > 5){
-    Serial.print("Distance: ");
-    Serial.println(distance);
-    Serial.print(" cm");
-  //}else{
-    //for(i = 0; i < 3; i++){ // als de meting niet goed is knippert het rode lampje 3 keer en dan na een seconde gaat hij weer overnieuw meten
-      //digitalWrite(led[0], HIGH);
-      //delay(500);
-      //digitalWrite(led[0], LOW);
-      //delay(500);
-    //}
-    //distance = 0;
-    //delay(1000);
-    //getDistance(trig, echo);
-  //}
+  
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  Serial.print(" cm");
 }
 
 void calibrateHeight(int trig, int echo){
@@ -94,7 +80,6 @@ void goodOrWrong(int trig, int echo){
   getDistance(trig, echo); 
   
   digitalWrite(led[i], LOW);
-  delay(1000);
 }
 
 void Planking(int trig, int echo){
@@ -107,7 +92,7 @@ void Planking(int trig, int echo){
   digitalWrite(led[1], LOW);
   delay(10);
   
-  while(Phone_input == 'l'){ //De exercise duurt op het moment een halve minuut en hij controlleert de hoogte elke seconde
+  while(Phone_input == 'l'){ //Hij controlleert de hoogte elke seconde
       goodOrWrong(trig, echo);
   }
   
