@@ -16,8 +16,6 @@ int i;
 int led[2] = {12,13}; //12 = rood 13 = groen
 int trigPin = 6;
 int echoPin = 7;
-int exerciseDuration = 30000; //Voor nu een halve minuut
-int actualDuration;
 int correcteUitvoer;
 char Phone_input; //voor het oplaan van het ontvangen karakter
 char currentExercise;
@@ -33,25 +31,13 @@ void getDistance(int trig, int echo){
   duration = pulseIn(echo, HIGH);
   distance = duration*0.034/2;
 
-  //if(distance < 100 && distance > 5){
-    Serial.print("Distance: ");
-    Serial.println(distance);
-    Serial.print(" cm");
-  //}else{
-    //for(i = 0; i < 3; i++){ // als de meting niet goed is knippert het rode lampje 3 keer en dan na een seconde gaat hij weer overnieuw meten
-      //digitalWrite(led[0], HIGH);
-      //delay(500);
-      //digitalWrite(led[0], LOW);
-      //delay(500);
-    //}
-    //distance = 0;
-    //delay(1000);
-    //getDistance(trig, echo);
-  //}
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  Serial.print(" cm");
 }
 
 void calibrateHeight(int trig, int echo){
-  delay(3000); //3 seconden om goed in positie te komen voordat hij gaat meten
+  delay(2000); //2 seconden om goed in positie te komen voordat hij gaat meten
 
   for(i = 0; i <= 5; i++){ //Hij meet 6 keer om accurate resultaten te krijgen en doet dit over een periode van 6 seconden
     getDistance(trig, echo);
@@ -83,7 +69,7 @@ void calibrateHeight(int trig, int echo){
   }
 }
 
-void goodOrWrong(int trig, int echo){
+void Planking(int trig, int echo){
   if(distance >= (calibratedHeight - 1) && distance <= (calibratedHeight + 1)){
     i = 1; //Als de hoogte goed is, gaat het groene lampje aan
     correcteUitvoer++;
@@ -95,20 +81,6 @@ void goodOrWrong(int trig, int echo){
   getDistance(trig, echo); 
   
   digitalWrite(led[i], LOW);
-  delay(1000);
-}
-
-void Planking(int trig, int echo){
-  calibrateHeight(trig, echo);
-  
-  digitalWrite(led[0], HIGH);//Om te laten weten dat de oefening begint gaan beide lampjes 1 keer aan en uit
-  digitalWrite(led[1], HIGH);
-  delay(10);
-  digitalWrite(led[0], LOW);
-  digitalWrite(led[1], LOW);
-  delay(10);
-  
-  goodOrWrong(trig, echo);
 }
 
 void squatsOrPushUps(int afstand, int trig, int echo){
@@ -143,6 +115,7 @@ void execute(char c){
           currentExercise = 's';
           break;
         case 'l':
+         calibrateHeight(trig, echo);
          currentExercise = 'l';
          break;  
         case 'b':
