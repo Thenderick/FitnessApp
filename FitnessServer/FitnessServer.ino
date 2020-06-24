@@ -20,6 +20,7 @@ int exerciseDuration = 30000; //Voor nu een halve minuut
 int actualDuration;
 int correcteUitvoer;
 char Phone_input; //voor het oplaan van het ontvangen karakter
+char currentExercise;
 
 void getDistance(int trig, int echo){
   digitalWrite(trig, LOW);
@@ -107,47 +108,42 @@ void Planking(int trig, int echo){
   digitalWrite(led[1], LOW);
   delay(10);
   
-  while(Phone_input == 'l'){ //De exercise duurt op het moment een halve minuut en hij controlleert de hoogte elke seconde
-      goodOrWrong(trig, echo);
-  }
-  
+  goodOrWrong(trig, echo);
 }
 
 void squatsOrPushUps(int afstand, int trig, int echo){
-  while(Phone_input == 'p' || Phone_input == 's'){
-     getDistance(trig, echo);
-     Serial.print("Afstand : ");
-     Serial.println(distance);
-      if(distance < afstand)
-      {
-        // Correcte uitvoering
-        digitalWrite(led[1], HIGH);
-        correcteUitvoer++;
-        delay(500);
-        digitalWrite(led[1], LOW);
-      }
-      else
-      {
-        // Foute uitvoering
-       digitalWrite(led[0], HIGH);
-       delay(500);
-       digitalWrite(led[0], LOW);
-      }
-      Serial.print("Aantal correcte uitvoer: ");
-      Serial.println(correcteUitvoer);
-   }
+   getDistance(trig, echo);
+   Serial.print("Afstand : ");
+   Serial.println(distance);
+    if(distance < afstand)
+    {
+      // Correcte uitvoering
+      digitalWrite(led[1], HIGH);
+      correcteUitvoer++;
+      delay(500);
+      digitalWrite(led[1], LOW);
+    }
+    else
+    {
+      // Foute uitvoering
+     digitalWrite(led[0], HIGH);
+     delay(500);
+     digitalWrite(led[0], LOW);
+    }
+    Serial.print("Aantal correcte uitvoer: ");
+    Serial.println(correcteUitvoer);
 }
 
 void execute(char c){
   switch (Phone_input) {
         case 'p': //pushups
-          squatsOrPushUps(15, trigPin, echoPin);           
+          currentExercise = 'p';           
           break;
         case 's': //squats
-          squatsOrPushUps(60, trigPin, echoPin);
+          currentExercise = 's';
           break;
         case 'l':
-         Planking(trigPin, echoPin);
+         currentExercise = 'l';
          break;  
         case 'b':
            stopExercise();
@@ -177,6 +173,24 @@ void stopExercise(){
   server.write(correcteUitvoer);
 }
 
+//Zorgt ervoor dat de juiste oefening blijft loopen
+void exercise(){
+  switch (currentExercise){
+    case 'p': //pushups
+      squatsOrPushUps(15, trigPin, echoPin);           
+      break;
+    case 's': //squats
+      squatsOrPushUps(60, trigPin, echoPin);
+      break;
+    case 'l':
+      Planking(trigPin, echoPin);
+      break;
+    default:
+      break;
+      
+  }
+}
+
 void setup() {
   // put your setup code here, to run once:
   correcteUitvoer = 0;
@@ -200,5 +214,6 @@ void loop() {
   client = server.available();
   Phone_input = client.read();
   execute(Phone_input);
+  exercise();
       
   }
