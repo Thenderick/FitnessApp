@@ -1,3 +1,12 @@
+#include <SPI.h>
+#include <Ethernet.h>
+
+EthernetClient client;
+
+byte mac[] = { 0x08, 0x97, 0x98, 0x6B, 0xF3, 0x80 };
+IPAddress ip(192, 168, 1, 3);
+
+EthernetServer server(80);
 
 int calibratedHeight;
 int countArray[6];
@@ -10,6 +19,7 @@ int echoPin = 7;
 int exerciseDuration = 30000; //Voor nu een halve minuut
 int actualDuration;
 int correcteUitvoer = 0;
+char Phone_input; //voor het oplaan van het ontvangen karakter
 
 void getDistance(int trig, int echo){
   digitalWrite(trig, LOW);
@@ -75,19 +85,19 @@ void calibrateHeight(int trig, int echo){
 void goodOrWrong(int trig, int echo){
   if(distance >= (calibratedHeight - 1) && distance <= (calibratedHeight + 1)){
     i = 1; //Als de hoogte goed is, gaat het groene lampje aan
+    correcteUitvoer++;
   }else{
     i = 0;//Als de hoogte niet goed is, gaat het rode lampje aan
   }
   digitalWrite(led[i], HIGH);
   
-  getDistance(trig, echo);
-
-  actualDuration + 1000;
+  getDistance(trig, echo); 
   
   digitalWrite(led[i], LOW);
+  delay(1000);
 }
 
-void Planking(int trig, int echo, int eDuration){
+void Planking(int trig, int echo){
   calibrateHeight(trig, echo);
   
   digitalWrite(led[0], HIGH);//Om te laten weten dat de oefening begint gaan beide lampjes 1 keer aan en uit
@@ -97,20 +107,14 @@ void Planking(int trig, int echo, int eDuration){
   digitalWrite(led[1], LOW);
   delay(10);
   
-  while(actualDuration < eDuration){ //De exercise duurt op het moment een halve minuut en hij controlleert de hoogte elke seconde
+  while(Phone_input == 'l'){ //De exercise duurt op het moment een halve minuut en hij controlleert de hoogte elke seconde
       goodOrWrong(trig, echo);
   }
-  if(actualDuration >= eDuration){
-      for(i = 0; i < 4; i++){ // Als de oefening voorbij is knippert hij 5 keer snel
-        digitalWrite(led[1], HIGH);
-        delay(10);
-        digitalWrite(led[1], LOW);
-        delay(10);
-      }
-    }
+  
 }
 
 void squatsOrPushUps(int afstand, int trig, int echo){
+  while(Phone_input == 'p' || Phone_input == 's'){
      getDistance(trig, echo);
      Serial.print("Afstand : ");
      Serial.println(distance);
@@ -130,6 +134,7 @@ void squatsOrPushUps(int afstand, int trig, int echo){
        digitalWrite(led[0], LOW);
       }
    }
+}
 
 void setup() {
   // put your setup code here, to run once:
@@ -139,25 +144,37 @@ void setup() {
   }
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
+
+   if(Ethernet.begin(mac)==0){
+    Serial.println("No DHCP");
+    Ethernet.begin(mac, ip);
+  }
+
+  server.begin();
+  Serial.print("Server is at "); Serial.println(Ethernet.localIP());
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  //Planking(trigPin, echoPin, exerciseDuration);
-   /*
-      switch (var) {
-        case label1: //pushups
-           squatsOrPushUps(15, trigPin, echoPin);           
+  client = server.available();
+  
+  while(client.available()){
+    Phone_input = client.read();
+      switch (Phone_input) {
+        case 'p': //pushups
+          squatsOrPushUps(15, trigPin, echoPin);           
           break;
-        case label2: //squats
-          squatsOrPushUps(60, trigPin, echoPin)
+        case 's': //squats
+          squatsOrPushUps(60, trigPin, echoPin);
           break;
-         case label3:
-         Planking(trigPin, echoPin, exerciseDuration);
+        case 'l':
+         Planking(trigPin, echoPin);
          break;  
+        case 'b':
+           server.write(correcteUitvoer);
+         break;
         default:
-          // statements
-          break;
+          
+         break;
       }
-  */
+  }
 }
