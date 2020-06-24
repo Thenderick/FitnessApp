@@ -22,6 +22,7 @@ void getDistance(int trig, int echo){
   duration = pulseIn(echo, HIGH);
   distance = duration*0.034/2;
 
+<<<<<<< Updated upstream
   if(distance < 100 && distance > 5){
     Serial.print("Distance: ");
     Serial.println(distance);
@@ -37,6 +38,11 @@ void getDistance(int trig, int echo){
     delay(1000);
     getDistance(trig, echo);
   }
+=======
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  //Serial.print(" cm");
+>>>>>>> Stashed changes
 }
 
 void calibrateHeight(int trig, int echo){
@@ -89,11 +95,19 @@ void goedOfFout(int trig, int echo){
   duration = pulseIn(echo, HIGH);
   distance = duration*0.034/2;
 
+<<<<<<< Updated upstream
   actualDuration + 1000;
 
   Serial.print("Distance: ");
   Serial.println(distance);
   Serial.print(" cm");
+=======
+  actualDuration = actualDuration + 1000;
+  
+      Serial.println(actualDuration);
+  
+  digitalWrite(led[i], LOW);
+>>>>>>> Stashed changes
 }
 
 void Planking(int trig, int echo, int eDuration){
@@ -115,9 +129,38 @@ void Planking(int trig, int echo, int eDuration){
     }else{
       goedOfFout(trig, echo);
     }
+<<<<<<< Updated upstream
   }
 }
 
+=======
+    actualDuration = 0;
+    delay(10000);
+}
+
+void squatsOrPushUps(int afstand, int trig, int echo){
+     getDistance(trig, echo);
+     Serial.print("Afstand : ");
+     Serial.println(distance);
+      if(distance < afstand)
+      {
+        // Correcte uitvoering
+        digitalWrite(led[1], HIGH);
+        correcteUitvoer++;
+        delay(500);
+        digitalWrite(led[1], LOW);
+      }
+      else
+      {
+        // Foute uitvoering
+       digitalWrite(led[0], HIGH);
+       delay(500);
+       digitalWrite(led[0], LOW);
+      }
+      Serial.println(correcteUitvoer);
+   }
+
+>>>>>>> Stashed changes
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -130,6 +173,29 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+<<<<<<< Updated upstream
   Planking(trigPin, echoPin, exerciseDuration);
   delay(10000); // 10 seconden pauze en dan komt of de volgende workout of dezelfde weer
+=======
+  //Planking(trigPin, echoPin, exerciseDuration);
+   /*
+      switch (var) {
+        case label1: //pushups
+           squatsOrPushUps(15, trigPin, echoPin);           
+          break;
+        case label2: //squats
+          squatsOrPushUps(50, trigPin, echoPin)
+          break;
+         case label3:
+         Planking(trigPin, echoPin, exerciseDuration);
+         break;  
+        default:
+          // statements
+          break;
+      }
+  */
+   Planking(trigPin, echoPin, exerciseDuration);
+   //squatsOrPushUps(50, trigPin, echoPin);
+   //squatsOrPushUps(15, trigPin, echoPin);
+>>>>>>> Stashed changes
 }
