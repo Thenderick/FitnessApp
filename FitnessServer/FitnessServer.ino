@@ -13,7 +13,7 @@ int countArray[6];
 long duration;
 int distance;
 int i;
-int led[2] = {12,13}; //12 = rood 13 = groen
+int led[2] = {9,8}; //9 = rood 8 = groen
 int trigPin = 6;
 int echoPin = 7;
 int correcteUitvoer;
