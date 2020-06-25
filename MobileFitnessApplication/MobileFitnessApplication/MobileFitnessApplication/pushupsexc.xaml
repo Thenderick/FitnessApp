@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MobileFitnessApplication.pushupsexc">
+
+    <StackLayout BackgroundColor="#525252" HorizontalOptions="CenterAndExpand" >
+        <Button BackgroundColor="#414141" Text="start oefening" TextColor="WhiteSmoke" Clicked="Pushupsexc" WidthRequest="1000" Margin="-20,-5,-20,0"></Button>
+        <Label Text="Results" TextColor="WhiteSmoke" HorizontalTextAlignment="Center" FontSize="30"></Label>
+        <ListView RowHeight="40"  x:Name="abc" ItemsSource="{Binding Results}" BackgroundColor="#525252">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="3">
+                            
+                            <Label TextColor="WhiteSmoke" FontSize="16" Margin="0,8,0,8" Text="{Binding reps}"></Label>
+                 
+
+
+                        </StackLayout>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
+ 

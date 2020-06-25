@@ -5,12 +5,51 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="MobileFitnessApplication.MainPage">
+    <ScrollView BackgroundColor="#313131">
+        <StackLayout BackgroundColor="#525252" HorizontalOptions="Center"  VerticalOptions="Start" WidthRequest="500">
+            <Label Text="Welkom!  kies een oefening" HorizontalTextAlignment="Center"  BackgroundColor="#313131" FontFamily="Segoe UI" FontAttributes="Bold,Italic" FontSize="28"  WidthRequest="350" VerticalOptions="Start" TextColor="White" Margin="0,0,0,30"></Label>
+            
+   
+        
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+
+        <ImageButton Source="squats.png"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand"
+                     Clicked="squats"
+                     CornerRadius="60"
+                     BorderWidth="2"
+                     WidthRequest="380"
+                     HeightRequest="190"
+                     Margin="0,10,0,10"
+                     Aspect="Fill"
+                     BackgroundColor="White"
+        >
+        </ImageButton>
+
+        <ImageButton Source="planking.png"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand"
+                     Clicked="planking"
+                     CornerRadius="60"
+                     BorderWidth="2"
+                     WidthRequest="380"
+                     HeightRequest="190"
+                     Margin="0,10,0,10"
+                     Aspect="Fill"
+                     BackgroundColor="White"></ImageButton>
+        
+        <ImageButton Source="pushups.png"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand"
+                     Clicked="pushups"
+                     CornerRadius="60"
+                     BorderWidth="2"
+                     WidthRequest="380"
+                     HeightRequest="190"
+                     Margin="0,10,0,80"
+                     Aspect="Fill"
+                     BackgroundColor="White"></ImageButton>
     </StackLayout>
-
+       </ScrollView>
 </ContentPage>
