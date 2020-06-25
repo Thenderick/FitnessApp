@@ -15,7 +15,7 @@ namespace MobileFitnessApplication
         public int reps { get; set; }
         [NotNull]
         public double tijd { get; set; }
-        [NotNull]
-        public int UserId { get; set; }
+        
+       
     }
 }

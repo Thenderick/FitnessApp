@@ -16,16 +16,19 @@ namespace MobileFitnessApplication
 {
 
     [DesignTimeVisible(false)]
+
+    
     public partial class MainPage : ContentPage
     {
-        public static DatabaseManager a = new DatabaseManager();
-        
-       
-        
+        public static DatabaseManager db = new DatabaseManager();
+
+
+
         public MainPage()
         {
             InitializeComponent();
-            
+            NavigationPage.SetHasNavigationBar(this, false);
+
         }
 
         private void planking(object sender, EventArgs e)

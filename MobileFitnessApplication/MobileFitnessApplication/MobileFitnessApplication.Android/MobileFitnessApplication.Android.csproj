@@ -91,19 +91,19 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\pushups.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MobileFitnessApplication\MobileFitnessApplication.csproj">
       <Project>{04AF228C-96E1-4723-B206-F9D696811DBF}</Project>
       <Name>MobileFitnessApplication</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\planking.jpg" />
+    <AndroidResource Include="Resources\drawable\squats.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\squats.jpg" />
+    <AndroidResource Include="Resources\drawable\planking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\pushups.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

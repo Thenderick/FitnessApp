@@ -25,10 +25,11 @@ namespace MobileFitnessApplication
         /// gets all results objects from database
         /// </summary>
         /// <returns>An observablecollection with all results</returns>
-        public ObservableCollection<Results> GetResults()
+        public ObservableCollection<Results> GetResults(int id)
         {
+            string a = id.ToString();
             ObservableCollection<Results> f;
-            List<Results> lis = Db.Query<Results>("select * from Results");
+            List<Results> lis = Db.Query<Results>($"select * from Results where oefeningid ={a}");
             f = new ObservableCollection<Results>(lis);
             return f;
         }
