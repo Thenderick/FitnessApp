@@ -15,7 +15,7 @@ namespace MobileFitnessApplication
         private int id;
         private int c;
         private DatabaseManager db;
-        static private string a = "192.168.1.3";
+        static private string a = "192.168.178.88";//Verander IP naar ip adres van arduino server
         static private int b = 80;
         Client client1 = new Client(a, b);
         public stop(int i, DatabaseManager d)
@@ -45,7 +45,8 @@ namespace MobileFitnessApplication
 
         public void stopexc(object sender, EventArgs e)
         {
-            c = Convert.ToInt32(client1.Recieve("b"));
+            string received = client1.Recieve("b");
+            c = Convert.ToInt32(received);
             client1.CloseConnection();
             int t;
             int r;
@@ -62,7 +63,8 @@ namespace MobileFitnessApplication
 
 
             db.newresult(id,r,t);
-            NavigationPage.SetHasNavigationBar(this, true);
+            Navigation.PopToRootAsync();
+            
         }
     }
 }

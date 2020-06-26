@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj": {}
+    "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj": {}
   },
   "projects": {
-    "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj": {
+    "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj",
+        "projectUniqueName": "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj",
         "projectName": "MobileFitnessApplication.iOS",
-        "projectPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj",
-        "packagesPath": "C:\\Users\\robin\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\obj\\",
+        "projectPath": "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\MobileFitnessApplication.iOS.csproj",
+        "packagesPath": "C:\\Users\\rickk\\.nuget\\packages\\",
+        "outputPath": "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\robin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rickk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +32,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj": {
-                "projectPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj"
+              "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj": {
+                "projectPath": "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj"
               }
             }
           }
@@ -69,21 +69,20 @@
         }
       }
     },
-    "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj": {
+    "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj",
+        "projectUniqueName": "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj",
         "projectName": "MobileFitnessApplication",
-        "projectPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj",
-        "packagesPath": "C:\\Users\\robin\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\obj\\",
+        "projectPath": "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj",
+        "packagesPath": "C:\\Users\\rickk\\.nuget\\packages\\",
+        "outputPath": "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\robin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rickk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -137,7 +136,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

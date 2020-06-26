@@ -20,10 +20,6 @@ namespace MobileFitnessApplication
     
     public partial class MainPage : ContentPage
     {
-        public static DatabaseManager db = new DatabaseManager();
-
-
-
         public MainPage()
         {
             InitializeComponent();

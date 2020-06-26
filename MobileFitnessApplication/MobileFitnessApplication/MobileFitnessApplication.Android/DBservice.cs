@@ -39,25 +39,5 @@ namespace MobileFitnessApplication.Droid
             var conn = new SQLiteConnection(path, false);
             return conn;
         }
-
-
-        void ReadWriteStream(Stream Readstream, Stream Writestream)
-        {
-
-            int length = 256;
-            byte[] buffer = new byte[length];
-            int bytesread = Readstream.Read(buffer, 0, length);
-            while (bytesread >= 0)
-            {
-                Writestream.Write(buffer, 0, bytesread);
-                bytesread = Readstream.Read(buffer, 0, length);
-            }
-            Readstream.Close();
-            Writestream.Close();
-
-
-        }
-
     }
-
 }

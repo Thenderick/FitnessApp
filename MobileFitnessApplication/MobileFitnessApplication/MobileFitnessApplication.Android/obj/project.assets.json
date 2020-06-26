@@ -2169,24 +2169,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\robin\\.nuget\\packages\\": {},
+    "C:\\Users\\rickk\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\MobileFitnessApplication.Android.csproj",
+      "projectUniqueName": "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\MobileFitnessApplication.Android.csproj",
       "projectName": "MobileFitnessApplication.Android",
-      "projectPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\MobileFitnessApplication.Android.csproj",
-      "packagesPath": "C:\\Users\\robin\\.nuget\\packages\\",
-      "outputPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\obj\\",
+      "projectPath": "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\MobileFitnessApplication.Android.csproj",
+      "packagesPath": "C:\\Users\\rickk\\.nuget\\packages\\",
+      "outputPath": "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\robin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rickk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -2200,8 +2200,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj": {
-              "projectPath": "C:\\project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj"
+            "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj": {
+              "projectPath": "C:\\Project\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication\\MobileFitnessApplication.csproj"
             }
           }
         }

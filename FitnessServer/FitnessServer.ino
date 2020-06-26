@@ -19,6 +19,8 @@ int echoPin = 7;
 int correcteUitvoer;
 char Phone_input; //voor het oplaan van het ontvangen karakter
 char currentExercise;
+bool down;
+char response[4];
 
 void getDistance(int trig, int echo){
   digitalWrite(trig, LOW);
@@ -32,8 +34,8 @@ void getDistance(int trig, int echo){
   distance = duration*0.034/2;
 
   Serial.print("Distance: ");
-  Serial.println(distance);
-  Serial.print(" cm");
+  Serial.print(distance);
+  Serial.println(" cm");
 }
 
 void calibrateHeight(int trig, int echo){
@@ -55,8 +57,8 @@ void calibrateHeight(int trig, int echo){
     }
     calibratedHeight = distance;
     Serial.print("Distance: ");
-    Serial.println(calibratedHeight);
-    Serial.print(" cm");
+    Serial.print(calibratedHeight);
+    Serial.println(" cm");
   }else{
     for(i = 0; i < 3; i++){ // als de meting niet goed is knippert het rode lampje 3 keer en dan na een seconde gaat hij weer overnieuw meten
       digitalWrite(led[0], HIGH);
@@ -87,26 +89,29 @@ void squatsOrPushUps(int afstand, int trig, int echo){
    getDistance(trig, echo);
    Serial.print("Afstand : ");
    Serial.println(distance);
-    if(distance < afstand)
+    if(down &&(distance < afstand))
     {
       // Correcte uitvoering
       digitalWrite(led[1], HIGH);
       correcteUitvoer++;
       delay(500);
       digitalWrite(led[1], LOW);
+      down = false;
     }
-    else
+    if(!down && (distance > afstand))
     {
       // Foute uitvoering
      digitalWrite(led[0], HIGH);
      delay(500);
      digitalWrite(led[0], LOW);
+     down = true;
     }
     Serial.print("Aantal correcte uitvoer: ");
     Serial.println(correcteUitvoer);
 }
 
 void execute(char c){
+  Serial.println(Phone_input);
   switch (Phone_input) {
         case 'p': //pushups
           currentExercise = 'p';           
@@ -115,7 +120,7 @@ void execute(char c){
           currentExercise = 's';
           break;
         case 'l':
-         calibrateHeight(trig, echo);
+         calibrateHeight(trigPin, echoPin);
          currentExercise = 'l';
          break;  
         case 'b':
@@ -130,6 +135,7 @@ void execute(char c){
 void stopExercise(){
   char tempExercise = Phone_input;
   Phone_input = NULL;
+  currentExercise = NULL;
   switch (tempExercise){
     case 'p':
       Serial.print("Totale aantal pushups: "); Serial.println(correcteUitvoer);
@@ -143,11 +149,15 @@ void stopExercise(){
     default:
       break;
   }
-  server.write(correcteUitvoer);
+  itoa(correcteUitvoer, response, 10);
+  correcteUitvoer = 0;
+  server.write(response, 4);
+  Serial.print("Response was: "); Serial.println(response);
 }
 
 //Zorgt ervoor dat de juiste oefening in de loop blijft
 void exercise(){
+  //Serial.println(currentExercise);
   switch (currentExercise){
     case 'p': //pushups
       squatsOrPushUps(15, trigPin, echoPin);           
@@ -185,8 +195,10 @@ void setup() {
 
 void loop() {
   client = server.available();
-  Phone_input = client.read();
-  execute(Phone_input);
+  if(client.connected()){
+    Phone_input = client.read();
+    execute(Phone_input);
+  }
   exercise();
       
   }
